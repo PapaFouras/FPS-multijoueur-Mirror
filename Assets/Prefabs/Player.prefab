@@ -643,12 +643,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 567
-  currentWeapon:
-    name: Submachine Gun
-    damage: 10
-    range: 100
-    fireRate: 0
-    graphics: {fileID: 0}
+  currentWeapon: {fileID: 0}
 --- !u!114 &9016300491071795983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,6 +659,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   maxHealth: 100
+  kills: 0
+  deaths: 0
   disableOnDeath:
   - {fileID: -1531171724800042362}
   - {fileID: 7489411895162917410}
@@ -729,13 +726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  primaryWeapon:
-    name: Blaster
-    damage: 5
-    range: 100
-    fireRate: 10
-    graphics: {fileID: 6509590401237135737, guid: 685560452af82b840a1905aff69a77b4,
-      type: 3}
+  primaryWeapon: {fileID: 11400000, guid: f279d0b1eeef1f34b8db31417d0185b5, type: 2}
   weaponHolder: {fileID: 4445285569421854995}
   weaponLayerName: Weapon
 --- !u!1 &7489411895492931816

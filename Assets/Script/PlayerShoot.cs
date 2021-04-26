@@ -12,7 +12,7 @@ public class PlayerShoot : NetworkBehaviour
     private LayerMask mask;
 
     private WeaponManager weaponManager;
-    public PlayerWeapon currentWeapon;
+    public WeaponData currentWeapon;
 
 
     

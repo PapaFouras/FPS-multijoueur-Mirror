@@ -5,9 +5,9 @@ public class WeaponManager : NetworkBehaviour
 {
 
     [SerializeField]
-    private PlayerWeapon primaryWeapon;
+    private WeaponData primaryWeapon;
 
-    private PlayerWeapon currentWeapon;
+    private WeaponData currentWeapon;
 
     private WeaponGraphics currentGraphics;
 
@@ -23,7 +23,7 @@ public class WeaponManager : NetworkBehaviour
         EquipWeapon(primaryWeapon);
     }
 
-    private void EquipWeapon(PlayerWeapon _weapon){
+    private void EquipWeapon(WeaponData _weapon){
         currentWeapon = _weapon;
         GameObject weaponIns = Instantiate(_weapon.graphics,weaponHolder.position,weaponHolder.rotation);
         weaponIns.transform.SetParent(weaponHolder);
@@ -40,7 +40,7 @@ public class WeaponManager : NetworkBehaviour
         }
     }
 
-    public PlayerWeapon GetCurrentWeapon(){
+    public WeaponData GetCurrentWeapon(){
         return currentWeapon;
     }
 
