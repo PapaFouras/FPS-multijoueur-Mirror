@@ -18,3 +18,5 @@ MonoBehaviour:
   fireRate: 0
   graphics: {fileID: 1761694404639331548, guid: a840e19bfdb6a8843a57a4c5ec888866,
     type: 3}
+  magazineSize: 10
+  reloadTime: 3

@@ -405,6 +405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1758119243260851360}
   - component: {fileID: 4149213280648136485}
+  - component: {fileID: 2128788578379588631}
   m_Layer: 0
   m_Name: Sniper_04
   m_TagString: Untagged
@@ -421,7 +422,7 @@ Transform:
   m_GameObject: {fileID: 1761694404639331548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.717, y: 0.155, z: -15.038}
-  m_LocalScale: {x: 1.7202, y: 1.7202, z: 1.7202}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1763534823552659768}
   - {fileID: 1758327328970372182}
@@ -452,6 +453,25 @@ MonoBehaviour:
   muzzleFlash: {fileID: 2949975037931854275}
   hitEffectPrefab: {fileID: 2393491475866966441, guid: 1d5907f082edf7145bd3d92a1fc99c9f,
     type: 3}
+--- !u!95 &2128788578379588631
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761694404639331548}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5725a0a160ca7c46a2a0e92975cb5d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1761929528713976982
 GameObject:
   m_ObjectHideFlags: 0

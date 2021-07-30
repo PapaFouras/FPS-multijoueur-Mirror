@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Mirror;
+using System.Collections;
 
 public class WeaponManager : NetworkBehaviour
 {
@@ -17,6 +18,11 @@ public class WeaponManager : NetworkBehaviour
     [SerializeField]
     private string weaponLayerName = "Weapon";
 
+    [HideInInspector]
+    public int currentMagazineSize;
+
+    public bool isReloading = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +31,7 @@ public class WeaponManager : NetworkBehaviour
 
     private void EquipWeapon(WeaponData _weapon){
         currentWeapon = _weapon;
+        currentMagazineSize = _weapon.magazineSize;
         GameObject weaponIns = Instantiate(_weapon.graphics,weaponHolder.position,weaponHolder.rotation);
         weaponIns.transform.SetParent(weaponHolder);
 
@@ -48,6 +55,34 @@ public class WeaponManager : NetworkBehaviour
         return currentGraphics;
     }
 
+    public IEnumerator Reload(){
+        if(isReloading){
+            yield break;
+        }
+
+        Debug.Log("reloading ...");
+        isReloading = true;
+        CmdOnReload();
+        yield return new WaitForSeconds(currentWeapon.reloadTime);
+        currentMagazineSize = currentWeapon.magazineSize;
+
+        isReloading = false;
+        Debug.Log("reloading finished");
+
+    }
+
+    [Command]
+    void CmdOnReload(){
+        RpcOnReload();
+    }
+
+    [ClientRpc]
+    void RpcOnReload(){
+        Animator animator = currentGraphics.GetComponent<Animator>();
+        if(animator != null){
+            animator.SetTrigger("Reload");
+        }
+    }
      
 
    

@@ -45,16 +45,29 @@ public GameObject playerUIInstance;
             Debug.LogError("Pas de Component playerUI sur playerUIInstance");
         }
         else{
-            ui.SetControler(GetComponent<PlayerControler>());
+            ui.SetPlayer(GetComponent<Player>());
         }
 
     GetComponent<Player>().SetUp();
+
+
+    CmdSetUsername(transform.name,UserAccountManager.LoggedInUsername);
 
         
      }
 
      
+
+     
  }
+ [Command]
+     public void CmdSetUsername(string playerId, string username){
+        Player player = GameManager.GetPlayer(playerId);
+        if(player != null){
+            Debug.Log(username+" has joined the game.");
+            player.username = username;
+        }
+     }
  
 
  public override void OnStartClient(){

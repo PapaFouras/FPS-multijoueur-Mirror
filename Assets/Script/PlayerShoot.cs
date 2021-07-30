@@ -29,11 +29,18 @@ public class PlayerShoot : NetworkBehaviour
     }
 
     void Update() {
+
+        currentWeapon = weaponManager.GetCurrentWeapon();
+
         if(PauseMenu.isOn == true){
             return;
         }
 
-        currentWeapon = weaponManager.GetCurrentWeapon();
+        if(Input.GetKeyDown(KeyCode.I) && weaponManager.currentMagazineSize < currentWeapon.magazineSize){
+            StartCoroutine(weaponManager.Reload());
+            return;
+        }
+
         if(currentWeapon.fireRate <= 0f){
             if(Input.GetButtonDown("Fire1")){
 
@@ -81,10 +88,21 @@ public class PlayerShoot : NetworkBehaviour
     [Client]
     private void Shoot(){
 
-        if(!isLocalPlayer)
+        if(!isLocalPlayer || weaponManager.isReloading)
         {
             return;
         }
+
+        if(weaponManager.currentMagazineSize <= 0){
+            // Debug.Log("Out of bullets");
+            StartCoroutine(weaponManager.Reload());
+            return;
+        }
+
+        weaponManager.currentMagazineSize --;
+
+        Debug.Log("il nous reste "+weaponManager.currentMagazineSize+" balles");
+
 
         CmdOnShoot();
         
@@ -96,6 +114,12 @@ public class PlayerShoot : NetworkBehaviour
 
             }
             CmdOnHit(hit.point,hit.normal);
+        }
+
+        if(weaponManager.currentMagazineSize <= 0){
+            // Debug.Log("Out of bullets");
+            StartCoroutine(weaponManager.Reload());
+            return;
         }
 
     }

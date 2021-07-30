@@ -44,7 +44,7 @@ public class Player : NetworkBehaviour
         }
 
         if(Input.GetKeyDown(KeyCode.H)){
-            RpcTakeDamage(199,"Joueur");
+            RpcTakeDamage(59,"Joueur");
         }
     }
     public void SetUp() 
@@ -58,6 +58,13 @@ public class Player : NetworkBehaviour
         
         
     }
+
+    public float GetHealthPct(){
+        return (float)currentHealth/maxHealth;
+    }
+
+    [SyncVar]
+    public string username = "Player";
 
     [Command(requiresAuthority = true)]
     private void CmdBroadcastNewPlayerSetUp(){
@@ -142,7 +149,7 @@ SetDefaults();
         Player sourcePlayer = GameManager.GetPlayer(sourceID);
         if(sourcePlayer != null){
             sourcePlayer.kills +=1;
-           GameManager.instance.onPlayerKilledCallback.Invoke(transform.name,sourcePlayer.name);
+           GameManager.instance.onPlayerKilledCallback.Invoke(username,sourcePlayer.username);
 
         }
 
