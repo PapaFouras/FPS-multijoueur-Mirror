@@ -841,6 +841,7 @@ MonoBehaviour:
   remoteLayerName: RemotePlayer
   dontDrawLayerName: DontDraw
   playerGraphics: {fileID: 7489411895116491860}
+  playerNameplateGraphics: {fileID: 409205253}
   playerUIPrefab: {fileID: 950571933459745552, guid: b35c2104d9b24ff4a869fcf2f75abe81,
     type: 3}
   playerUIInstance: {fileID: 0}

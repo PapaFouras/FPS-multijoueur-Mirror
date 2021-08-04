@@ -29,7 +29,7 @@ public class WeaponManager : NetworkBehaviour
         EquipWeapon(primaryWeapon);
     }
 
-    private void EquipWeapon(WeaponData _weapon){
+    public void EquipWeapon(WeaponData _weapon){
         currentWeapon = _weapon;
         currentMagazineSize = _weapon.magazineSize;
         GameObject weaponIns = Instantiate(_weapon.graphics,weaponHolder.position,weaponHolder.rotation);

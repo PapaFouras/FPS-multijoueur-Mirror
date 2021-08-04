@@ -18,6 +18,9 @@ public class PlayerSetUp : NetworkBehaviour
  private GameObject playerGraphics;
 
  [SerializeField]
+ private GameObject playerNameplateGraphics;
+
+ [SerializeField]
 private GameObject playerUIPrefab;
 [HideInInspector]
 public GameObject playerUIInstance;
@@ -36,6 +39,7 @@ public GameObject playerUIInstance;
        
     //desactiver la partie graphique du joueur local
         Util.SetLayerRecursively(playerGraphics,LayerMask.NameToLayer(dontDrawLayerName));
+        Util.SetLayerRecursively(playerNameplateGraphics,LayerMask.NameToLayer(dontDrawLayerName));
 
         // création du UI du joueur local
         playerUIInstance = Instantiate(playerUIPrefab);
